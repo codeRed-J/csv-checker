@@ -2,21 +2,22 @@ import java.time.*;
 
 public class dateValidator extends Validator{
 	
-	private date date1;
-	private date date2;
+	private String date1;
+	private String date2;
 	
 	super(String line){
 		
 	}
 	
+	// main method which will check date (4 and 5 column) field with all given methods
 	public boolean checkDate(String date1, String date2){
 		this.date1 = date1;
 		this.date2 = date2;
-		if(checkdateFormat(date1)){
+		if(checkDateFormat(date1)){
 			System.out.println("date 1 format is correct.");
-			if(checkdateFormat(date2)){
+			if(checkDateFormat(date2)){
 				System.out.println("date 2 format is correct.");
-				if(checkdateRange(date1, date2)){
+				if(checkDateRange(date1, date2)){
 					System.out.println("Range of date is correct.");
 					if(compareFormats(date1, date2)){
 						System.out.println("date formats are identical.");
@@ -37,10 +38,9 @@ public class dateValidator extends Validator{
 		return false;
 	}
 	
-	// check if it is in format DD.MM.YYYY, MM.YYYY or YYYY
-	public boolean checkdateFormat(String date){
-		identifyFormat(date);
-		Year year = Year.parse(date);
+	// check if date is in format DD.MM.YYYY, MM.YYYY or YYYY
+	public boolean checkDateFormat(String date){
+		
 		if(year.getValue() > 1945 && year.getValue() < 2030){
 			return true
 		}
